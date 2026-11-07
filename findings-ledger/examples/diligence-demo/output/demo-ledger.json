@@ -1,0 +1,334 @@
+{
+  "format": "findings-ledger/1",
+  "sources": [
+    {
+      "id": "src_576fa772f1047fdc9cc5ebd79f77ab65436e6ba3ab0c6dfba7cea2704d0acabb",
+      "alias": "RentRoll-2026-10",
+      "origin": "Seller",
+      "medium": "document",
+      "sha256": "df943b3acf0237ae8a5e7190fe9fbb4752f87f2a7ad26018851adce91cbfde61",
+      "received": "2026-10-28",
+      "name": "rent-roll.csv",
+      "recorded_at": "2026-11-07T09:00:00.000Z"
+    },
+    {
+      "id": "src_a9efbce76dfd773af8b50d1e99a763b5d2c670bc541125531404363f0a511a53",
+      "alias": "T12-Seller",
+      "origin": "Seller",
+      "medium": "document",
+      "sha256": "3c43766fa4ccf3f77344358df0702df9b073614ee3e001851ce875d0009822ff",
+      "received": "2026-10-28",
+      "name": "t12.csv",
+      "recorded_at": "2026-11-07T09:01:00.000Z"
+    },
+    {
+      "id": "src_bb1bd0e9bff3c4d5c5208dce21092618e67bd20f14430572b4c3aee71882a1ff",
+      "alias": "CountyTaxBill-2025",
+      "origin": "County Tax Collector",
+      "medium": "document",
+      "sha256": "bf2448c44f0c1080ca8055fe2cb74d86c582a2cd6565c55299c08ce7347c790b",
+      "received": "2026-10-30",
+      "name": "county-tax-bill.txt",
+      "recorded_at": "2026-11-07T09:02:00.000Z"
+    },
+    {
+      "id": "src_3c40f2c16d5accbbc1f015b6d7faabcf445aaa55b21b58bb6fed211050ff20c1",
+      "alias": "BrokerCall-1031",
+      "origin": "Listing Broker",
+      "medium": "verbal",
+      "received": "2026-10-31",
+      "name": "Listing broker, phone call (fictional)",
+      "sensitive": true,
+      "recorded_at": "2026-11-07T09:03:00.000Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "fnd_84f5e58849edbcad033db7181c85ac1391107c2fd68b0221489b06ec58bfd844",
+      "statement": "The property has 12 residential units.",
+      "kind": "fact",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_576fa772f1047fdc9cc5ebd79f77ab65436e6ba3ab0c6dfba7cea2704d0acabb",
+          "locator": {
+            "type": "row",
+            "value": "1-12"
+          },
+          "excerpt": "101,1BR,720,occupied,1450,2027-03-31 … 206,studio,520,occupied,1210,2027-04-30"
+        },
+        {
+          "source_id": "src_bb1bd0e9bff3c4d5c5208dce21092618e67bd20f14430572b4c3aee71882a1ff",
+          "locator": {
+            "type": "section",
+            "value": "Property"
+          },
+          "excerpt": "Units: 12"
+        }
+      ],
+      "inputs": [],
+      "limitations": [],
+      "so_what": "The unit count is settled by two independent records. Underwrite on 12 units.",
+      "data": {
+        "units": 12
+      },
+      "recorded_at": "2026-11-07T09:04:00.000Z"
+    },
+    {
+      "id": "fnd_21f7e90f40436a5fc32d10c7085d959b268a71f72e4966b6ce2a9777221bfbaa",
+      "statement": "The rent roll schedules a monthly rent for each of the 12 units.",
+      "kind": "fact",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_576fa772f1047fdc9cc5ebd79f77ab65436e6ba3ab0c6dfba7cea2704d0acabb",
+          "locator": {
+            "type": "row",
+            "value": "1-12"
+          },
+          "excerpt": "101,1BR,720,occupied,1450,2027-03-31 / 102,1BR,720,occupied,1475,2026-12-31 / 103,2BR,980,occupied,1850,2027-06-30 / 104,2BR,980,vacant,1900, / 105,1BR,720,occupied,1450,2027-01-31 / 106,studio,510,occupied,1190,2026-11-30 / 201,1BR,735,occupied,1500,2027-08-31 / 202,1BR,735,occupied,1500,2027-02-28 / 203,2BR,990,occupied,1895,2027-05-31 / 204,2BR,990,occupied,1895,2026-12-31 / 205,1BR,735,occupied,1500,2027-09-30 / 206,studio,520,occupied,1210,2027-04-30"
+        }
+      ],
+      "inputs": [],
+      "limitations": [
+        "Seller-prepared. No leases or estoppels reviewed."
+      ],
+      "data": {
+        "rents": {
+          "101": 1450,
+          "102": 1475,
+          "103": 1850,
+          "104": 1900,
+          "105": 1450,
+          "106": 1190,
+          "201": 1500,
+          "202": 1500,
+          "203": 1895,
+          "204": 1895,
+          "205": 1500,
+          "206": 1210
+        }
+      },
+      "recorded_at": "2026-11-07T09:05:00.000Z"
+    },
+    {
+      "id": "fnd_164725926917d9f6133c8c14fd39801f19e9657f962e7d4340745bf738ccb1db",
+      "statement": "The rent roll shows unit 104 as vacant.",
+      "kind": "fact",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_576fa772f1047fdc9cc5ebd79f77ab65436e6ba3ab0c6dfba7cea2704d0acabb",
+          "locator": {
+            "type": "row",
+            "value": "104"
+          },
+          "excerpt": "104,2BR,980,vacant,1900,"
+        }
+      ],
+      "inputs": [],
+      "limitations": [],
+      "so_what": "One unit (104) is in lease-up. Ask the seller for its leasing history and asking-rent support.",
+      "recorded_at": "2026-11-07T09:06:00.000Z"
+    },
+    {
+      "id": "fnd_18a9d1851c602fdd53e5fa72cdd83ab9993540847f0f248965d368f97671873e",
+      "statement": "The seller's T-12 reports real estate taxes of $48,200.",
+      "kind": "fact",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_a9efbce76dfd773af8b50d1e99a763b5d2c670bc541125531404363f0a511a53",
+          "locator": {
+            "type": "row",
+            "value": "Real estate taxes"
+          },
+          "excerpt": "Real estate taxes,48200"
+        }
+      ],
+      "inputs": [],
+      "limitations": [],
+      "data": {
+        "annual_taxes": 48200
+      },
+      "recorded_at": "2026-11-07T09:08:00.000Z"
+    },
+    {
+      "id": "fnd_5db329fae5ea8f78483b22f66140ed8539a87aaba7c5b6212de3536d35a4f9ba",
+      "statement": "The county's 2025 tax bill is $52,640.",
+      "kind": "fact",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_bb1bd0e9bff3c4d5c5208dce21092618e67bd20f14430572b4c3aee71882a1ff",
+          "locator": {
+            "type": "section",
+            "value": "Bill"
+          },
+          "excerpt": "2025 tax bill: $52,640"
+        }
+      ],
+      "inputs": [],
+      "limitations": [],
+      "data": {
+        "annual_taxes": 52640
+      },
+      "recorded_at": "2026-11-07T09:09:00.000Z"
+    },
+    {
+      "id": "fnd_38324a5ff397a90870a1fdc4ed535bdc14cca1e3fa65bf0e1310c8e34764658f",
+      "statement": "The county's 2025 bill shows no delinquent installments.",
+      "kind": "absence",
+      "basis": "observed",
+      "supports": [
+        {
+          "source_id": "src_bb1bd0e9bff3c4d5c5208dce21092618e67bd20f14430572b4c3aee71882a1ff",
+          "locator": {
+            "type": "section",
+            "value": "Bill"
+          },
+          "excerpt": "Delinquent installments: none"
+        }
+      ],
+      "inputs": [],
+      "coverage": {
+        "scope": "Tax year 2025 bill for parcel 000-FICT-0001, as issued",
+        "complete": true
+      },
+      "limitations": [],
+      "recorded_at": "2026-11-07T09:11:00.000Z"
+    },
+    {
+      "id": "fnd_613e185c89d2570067f038dd286148092c69cbe7785a4b6bf7be033c4c6b7daf",
+      "statement": "The county bill exceeds the seller's T-12 taxes by $4,440 (9.21%).",
+      "kind": "fact",
+      "basis": "derived",
+      "supports": [],
+      "inputs": [
+        "fnd_18a9d1851c602fdd53e5fa72cdd83ab9993540847f0f248965d368f97671873e",
+        "fnd_5db329fae5ea8f78483b22f66140ed8539a87aaba7c5b6212de3536d35a4f9ba"
+      ],
+      "method": "County 2025 bill minus T-12 real estate taxes; percentage of the T-12 figure.",
+      "limitations": [],
+      "data": {
+        "variance": 4440,
+        "percent_of_t12": 9.21
+      },
+      "recorded_at": "2026-11-07T09:12:00.000Z"
+    },
+    {
+      "id": "fnd_32f7de66565b5b7bff2af2ef784df1aa2b429d931c140f06b686b8910febadd4",
+      "statement": "Annual gross potential rent is $225,780.",
+      "kind": "fact",
+      "basis": "derived",
+      "supports": [],
+      "inputs": [
+        "fnd_21f7e90f40436a5fc32d10c7085d959b268a71f72e4966b6ce2a9777221bfbaa"
+      ],
+      "method": "Sum of the 12 scheduled monthly rents times 12; the vacant unit counts at its asking rent.",
+      "limitations": [],
+      "data": {
+        "monthly_total": 18815,
+        "annual": 225780
+      },
+      "recorded_at": "2026-11-07T09:13:00.000Z"
+    },
+    {
+      "id": "fnd_5c47dd5948214a3e51fcfc1d0a2edfa6b3ec502bbc5da48f56f4f7fcee763351",
+      "statement": "The seller's T-12 may understate real estate taxes by about $4,440 a year.",
+      "kind": "fact",
+      "basis": "inferred",
+      "supports": [],
+      "inputs": [
+        "fnd_18a9d1851c602fdd53e5fa72cdd83ab9993540847f0f248965d368f97671873e",
+        "fnd_5db329fae5ea8f78483b22f66140ed8539a87aaba7c5b6212de3536d35a4f9ba"
+      ],
+      "rationale": "The T-12 figure is below the county's 2025 bill. If the county figure governs going forward, expenses are understated and NOI is overstated by the same amount.",
+      "limitations": [
+        "No reassessment history reviewed.",
+        "The T-12 may reflect a prior-year bill."
+      ],
+      "recorded_at": "2026-11-07T09:14:00.000Z"
+    }
+  ],
+  "corroborations": [
+    {
+      "id": "cor_1c000577c124dc72596099614148317b27f5ef9cbbfb68de469ec7dd46ea4746",
+      "finding_id": "fnd_164725926917d9f6133c8c14fd39801f19e9657f962e7d4340745bf738ccb1db",
+      "support": {
+        "source_id": "src_3c40f2c16d5accbbc1f015b6d7faabcf445aaa55b21b58bb6fed211050ff20c1",
+        "locator": {
+          "type": "timestamp",
+          "value": "call of 2026-10-31"
+        },
+        "excerpt": "Broker said unit 104 has sat empty for about four months."
+      },
+      "recorded_at": "2026-11-07T09:07:00.000Z"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "unk_7880f49e406a9f896e4d13e64481cb8912c7596450fcffce904cba04768afc43",
+      "question": "Why does the seller's T-12 show $48,200 in taxes when the county bill is $52,640?",
+      "why_it_matters": "Taxes feed NOI directly. A reassessment or a prior-year figure changes the valuation.",
+      "searched": "The T-12 and the 2025 county bill only.",
+      "would_resolve": "Tax-collector payment history and any pending reassessment notice.",
+      "related_findings": [
+        "fnd_18a9d1851c602fdd53e5fa72cdd83ab9993540847f0f248965d368f97671873e",
+        "fnd_5db329fae5ea8f78483b22f66140ed8539a87aaba7c5b6212de3536d35a4f9ba",
+        "fnd_613e185c89d2570067f038dd286148092c69cbe7785a4b6bf7be033c4c6b7daf"
+      ],
+      "revisions": [
+        {
+          "n": 1,
+          "status": "open",
+          "note": "Opened.",
+          "resolved_by": [],
+          "recorded_at": "2026-11-07T09:15:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "unk_330038402f2e0dffb5a44d33b01e04d74f6b6f21c925f8d772e713e63515b147",
+      "question": "Do tenant estoppels or leases confirm the rent roll?",
+      "why_it_matters": "Every rent figure comes from the seller alone, so rents and occupancy stay at L3.",
+      "searched": "Data room index as of 2026-11-07: no estoppels or leases posted.",
+      "would_resolve": "Signed estoppels or leases for the 11 occupied units.",
+      "related_findings": [
+        "fnd_21f7e90f40436a5fc32d10c7085d959b268a71f72e4966b6ce2a9777221bfbaa"
+      ],
+      "revisions": [
+        {
+          "n": 1,
+          "status": "open",
+          "note": "Opened.",
+          "resolved_by": [],
+          "recorded_at": "2026-11-07T09:16:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "unk_4238d6201f28260b276ab9bd66effde658c3fc722c64e40a780a0c969a9d23ec",
+      "question": "What do the insurance loss runs show?",
+      "would_resolve": "Five years of carrier loss runs.",
+      "related_findings": [],
+      "revisions": [
+        {
+          "n": 1,
+          "status": "open",
+          "note": "Opened.",
+          "resolved_by": [],
+          "recorded_at": "2026-11-07T09:17:00.000Z"
+        },
+        {
+          "n": 2,
+          "status": "narrowed",
+          "note": "Requested 2026-10-31. Seller says they will be posted next week.",
+          "resolved_by": [],
+          "recorded_at": "2026-11-07T09:18:00.000Z"
+        }
+      ]
+    }
+  ],
+  "digest": "1bd739e0140d88d5f5d594cc329713efb3a08fd305603176bf70bc1e07d8a5c0"
+}

@@ -1,0 +1,7 @@
+FICTIONAL SAMPLE DATA. Not a real record.
+County Tax Collector. Tax Year 2025 Bill
+Parcel: 000-FICT-0001
+Property: Harborview Flats (fictional)
+Units: 12
+2025 tax bill: $52,640
+Delinquent installments: none

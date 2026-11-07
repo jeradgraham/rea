@@ -1,0 +1,47 @@
+{
+  "name": "findings-ledger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Graded, sourced findings and first-class unknowns for diligence work. Working name; rename freely.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "bin": {
+    "findings-ledger": "dist/cli.js"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "node --disable-warning=ExperimentalWarning --test tests/*.spec.ts",
+    "demo": "node --disable-warning=ExperimentalWarning examples/diligence-demo/build-demo.ts",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "default": "./dist/mcp.js"
+    }
+  },
+  "files": [
+    "dist",
+    "skill",
+    "SPEC.md",
+    "README.md",
+    "ATTRIBUTION.md"
+  ]
+}

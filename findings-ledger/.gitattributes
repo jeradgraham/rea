@@ -1,0 +1,2 @@
+# Fixtures are hashed into the demo ledger; keep their bytes identical on every OS.
+examples/** text eol=lf

@@ -1,0 +1,14 @@
+# FICTIONAL SAMPLE DATA. Harborview Flats is not a real property.
+unit,type,sqft,status,monthly_rent,lease_end
+101,1BR,720,occupied,1450,2027-03-31
+102,1BR,720,occupied,1475,2026-12-31
+103,2BR,980,occupied,1850,2027-06-30
+104,2BR,980,vacant,1900,
+105,1BR,720,occupied,1450,2027-01-31
+106,studio,510,occupied,1190,2026-11-30
+201,1BR,735,occupied,1500,2027-08-31
+202,1BR,735,occupied,1500,2027-02-28
+203,2BR,990,occupied,1895,2027-05-31
+204,2BR,990,occupied,1895,2026-12-31
+205,1BR,735,occupied,1500,2027-09-30
+206,studio,520,occupied,1210,2027-04-30
